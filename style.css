@@ -7,10 +7,12 @@
 }
 .clock{
     background-color: grey;
+    padding-bottom:5px;
+    margin-bottom:5px;
 }
 .schedule{
     background-color:darkblue;
-    color:white;
+    color: white;
 }
 .trainInfo tr:nth-child(even){
     background-color:lightgrey;

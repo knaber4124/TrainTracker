@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -51,7 +52,7 @@
                     <tr>
                         <th>Train Name</th>
                         <th>Destination</th>
-                        <th>First Arrival</th>
+                        <th>Frequency</th>
                         <th>Next Arrival</th>
                         <th>Minutes to Next Arrival</th>
                     </tr>
@@ -62,25 +63,21 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <td>t</td>
-                        <td>tp</td>
-                        <td>uy</td>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
                 </table>
 
             </div>
+            
             <div class='col-md-1'>
 
             </div>
         </div>
+        <br>
         <div class='row form-header'>
             <div class='col-md-12'>
                 <h5>Enter a New Train</h5>
             </div>
         </div>
+        <br>
         <div class='row form'>
             <div class='col-md-1'>
 
@@ -89,24 +86,24 @@
                 <form>
                     <div class="form-group">
                         <label for="trainNameInput">Train Name</label>
-                        <input type="name" class="form-control" id="nameInput" placeholder="Enter Train Name">
+                        <input type="name" class="form-control nameInput" placeholder="Enter Train Name">
                     </div>
                     <div class="form-group">
                         <label for="trainDesinationInput">Desination</label>
-                        <input type="destinationInput" class="form-control" id="destinationInput"
+                        <input type="destinationInput" class="form-control destinationInput"
                             placeholder="Destination">
                     </div>
                     <div class="form-group">
                         <label for="trainFirstArrival">First Arrival(hh:mm - Military Time)</label>
-                        <input type="firstArrivalInput" class="form-control" id="arrivalInput"
+                        <input type="firstArrivalInput" class="form-control arrivalInput"
                             placeholder="First Arrival">
                     </div>
                     <div class="form-group">
                         <label for="trainArrivalInterval">How Often Does it Arrive?(In Minutes)</label>
-                        <input type="intervalInput" class="form-control" id="intervalInput" placeholder="Interval">
+                        <input type="intervalInput" class="form-control intervalInput" placeholder="Interval">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary submit">Submit</button>
                 </form>
             </div>
             <div class='col-md-1'>
