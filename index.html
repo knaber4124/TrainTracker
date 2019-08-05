@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel='stylesheet' href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Charm:700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Train Tracker</title>
+</head>
+
+<body>
+    <div class='container'>
+        <div class='row header'>
+            <div class='col-md-12 text-center'>
+                <h1>Track Those Trains</h1>
+            </div>
+        </div>
+        <div class='row clock'>
+            <div class='col-md-12 text-center'>
+                <h6>The current time is:</h6>
+            </div>
+        </div>
+        <div class='row schedule'>
+            <div class='col-md-12'>
+                <h5>Train Schedule</h5>
+            </div>
+        </div>
+        <div class='row tracker'>
+            <div class='col-md-1'>
+
+            </div>
+            <div class='col-md-10 text-center'>
+                <table style="width:100%" class='trainInfo'>
+                    <tr>
+                        <th>Train Name</th>
+                        <th>Destination</th>
+                        <th>First Arrival</th>
+                        <th>Next Arrival</th>
+                        <th>Minutes to Next Arrival</th>
+                    </tr>
+                    <tr>
+                        <td>Boston Express</td>
+                        <td>Boston</td>
+                        <td>1300</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>t</td>
+                        <td>tp</td>
+                        <td>uy</td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class='col-md-1'>
+
+            </div>
+        </div>
+        <div class='row form-header'>
+            <div class='col-md-12'>
+                <h5>Enter a New Train</h5>
+            </div>
+        </div>
+        <div class='row form'>
+            <div class='col-md-1'>
+
+            </div>
+            <div class='col-md-10'>
+                <form>
+                    <div class="form-group">
+                        <label for="trainNameInput">Train Name</label>
+                        <input type="name" class="form-control" id="nameInput" placeholder="Enter Train Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="trainDesinationInput">Desination</label>
+                        <input type="destinationInput" class="form-control" id="destinationInput"
+                            placeholder="Destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="trainFirstArrival">First Arrival(hh:mm - Military Time)</label>
+                        <input type="firstArrivalInput" class="form-control" id="arrivalInput"
+                            placeholder="First Arrival">
+                    </div>
+                    <div class="form-group">
+                        <label for="trainArrivalInterval">How Often Does it Arrive?(In Minutes)</label>
+                        <input type="intervalInput" class="form-control" id="intervalInput" placeholder="Interval">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class='col-md-1'>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <script src='./trainTracker.js'></script>
+</body>
+
+</html>
