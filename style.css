@@ -10,6 +10,11 @@
     padding-bottom:5px;
     margin-bottom:5px;
 }
+.clock-header{
+    background-color: grey;
+    padding-bottom:5px;
+    
+}
 .schedule{
     background-color:darkblue;
     color: white;

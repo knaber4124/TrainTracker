@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
@@ -23,6 +24,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/momentjs/2.14.0/moment.min.js'></script>
     <title>Train Tracker</title>
 </head>
 
@@ -33,9 +35,14 @@
                 <h1>Track Those Trains</h1>
             </div>
         </div>
-        <div class='row clock'>
+        <div class='row clock-header'>
             <div class='col-md-12 text-center'>
-                <h6>The current time is:</h6>
+                <h6>
+                    The current time is:
+                </h6>
+                <h6 class='clock'>
+
+                </h6>
             </div>
         </div>
         <div class='row schedule'>
@@ -66,7 +73,7 @@
                 </table>
 
             </div>
-            
+
             <div class='col-md-1'>
 
             </div>
@@ -91,19 +98,20 @@
                     <div class="form-group">
                         <label for="trainDesinationInput">Desination</label>
                         <input type="destinationInput" class="form-control destinationInput"
-                            placeholder="Destination">
+                            placeholder="Enter Destination">
                     </div>
                     <div class="form-group">
                         <label for="trainFirstArrival">First Arrival(hh:mm - Military Time)</label>
                         <input type="firstArrivalInput" class="form-control arrivalInput"
-                            placeholder="First Arrival">
+                            placeholder=" Enter First Arrival in Military Time">
                     </div>
                     <div class="form-group">
                         <label for="trainArrivalInterval">How Often Does it Arrive?(In Minutes)</label>
-                        <input type="intervalInput" class="form-control intervalInput" placeholder="Interval">
+                        <input type="intervalInput" class="form-control intervalInput"
+                            placeholder="Enter Interval in Minutes">
                     </div>
 
-                    <button type="submit" class="btn btn-primary submit">Submit</button>
+                    <button type="button" class="btn btn-primary submit">Add The New Train</button>
                 </form>
             </div>
             <div class='col-md-1'>
