@@ -40,14 +40,6 @@ $(document).ready(function () {
         $('.arrivalInput').val('');
         $('.intervalInput').val('');
 
-
-
-
-        // localStorage.setItem("newTrain", newTrain);
-        // localStorage.setItem('newTrainDestination', newTrainDestination);
-        // localStorage.setItem('newTrainFirstArrival', newTrainFirstArrival);
-        // localStorage.setItem('newTrainInterval', newTrainInterval);
-
         database.ref().push({
             newTrain: newTrain,
             newTrainDestination: newTrainDestination,
@@ -55,9 +47,7 @@ $(document).ready(function () {
             newTrainInterval: newTrainInterval,
             nextArrival: nextArrival,
             timeRemaining: timeRemaining
-
         });
-
 
         database.ref().on('child_added', function (childSnapshot) {
             let newTR = $('<tr>');
