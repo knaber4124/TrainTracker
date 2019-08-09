@@ -43,6 +43,11 @@ body{
     color:black;
     border: solid 1px black;
 }
+.submit:hover{
+    background-color:rgba(0,0,0,0);
+    color:black;
+    border: solid 1px black;
+}
 .lowerHalf{
     background-image: url('./paper.jpg');
     background-size:100%;

@@ -12,16 +12,12 @@ $(document).ready(function () {
     firebase.initializeApp(firebaseConfig);
 
     database = firebase.database();
-    // let now = moment();
+
     $('.clock').text(moment().format('MMMM D YYYY, h:mm a'));
     function update() {
         $('.clock').text(moment().format('MMMM D YYYY, h:mm a'));
     }
     setInterval(update, 1000);
-
-    function populate(){
-
-    };
 
 
     $('.submit').on('click', function (event) {
@@ -39,6 +35,10 @@ $(document).ready(function () {
         console.log(timeRemaining);
         var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
         console.log(nextArrival);
+        $('.nameInput').val('');
+        $('.destinationInput').val('');
+        $('.arrivalInput').val('');
+        $('.intervalInput').val('');
 
 
 
@@ -53,6 +53,8 @@ $(document).ready(function () {
             newTrainDestination: newTrainDestination,
             newTrainFirstArrival: newTrainFirstArrival,
             newTrainInterval: newTrainInterval,
+            nextArrival: nextArrival,
+            timeRemaining: timeRemaining
 
         });
 
@@ -61,11 +63,11 @@ $(document).ready(function () {
             let newTR = $('<tr>');
             let trainName = $('<td>').text(childSnapshot.val().newTrain);
             let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
-            let trainFrequency = $('<td>').text(childSnapshot.val().newTrainInterval);
+            let trainFrequency = $('<td>').text(childSnapshot.val().newTrainInterval + ' ' +'minutes');
             let nextArrivalTime = $('<td>');
-            nextArrivalTime.addClass('nextArrivalData');
+            nextArrivalTime.addClass('nextArrivalData').text(childSnapshot.val().nextArrival);
             let nextArrivalInterval = $('<td>');
-            nextArrivalInterval.addClass('timeRemainingData');
+            nextArrivalInterval.addClass('timeRemainingData').text(childSnapshot.val().timeRemaining);
             var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
             console.log(firstArrivalconverted);
             var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
@@ -74,29 +76,35 @@ $(document).ready(function () {
             console.log(timeRemaining);
             var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
             console.log(nextArrival);
-            function updateTimes() {
-                $('.nextArrivalData').text(nextArrival);
-                $('.timeRemainingData').text(timeRemaining);
-            }
-            setInterval(updateTimes, 60000);
+
+
             newTR.append(trainName, trainDesination, trainFrequency, nextArrivalTime, nextArrivalInterval);
             $('.trainInfo').append(newTR);
 
         })
+        function updateTimes() {
+            var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
+            console.log(firstArrivalconverted);
+            var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
+            var timeDifference = diffCalc % newTrainInterval;
+            var timeRemaining = newTrainInterval - timeDifference;
+            console.log(timeRemaining);
+            var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
+            console.log(nextArrival);
+
+            $('.nextArrivalData').text(snapShot.val().nextArrival);
+            $('.timeRemainingData').text(snapShot.val().timeRemaining);
+        }
+        setInterval(updateTimes, 1000)
+
+
 
 
     })
 
-    // database.ref('users').push(function)
-    // // change on click to push to firebase as a JSON object
-    // database.ref('users').on('child_added', function(snapshot){
-    // pull data from Fireadd data to page
-    // newTR.append(trainName,trainDesination,trainFrequency,nextArrivalTime,nextArrivalInterval);
-    //     $('.trainInfo').append(newTR);
+
 
 })
 
-// });
 
-//
 
