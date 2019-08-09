@@ -50,8 +50,7 @@ $(document).ready(function () {
         });
 
         database.ref('/trains').on('child_added', function (childSnapshot) {
-            console.log(this);
-            [this].forEach(element => {
+            
                 let newTR = $('<tr>');
                 let trainName = $('<td>').text(childSnapshot.val().newTrain);
                 let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
