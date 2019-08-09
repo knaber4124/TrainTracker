@@ -1,24 +1,50 @@
-.form-header{
-    background-color:darkblue;
-    color:white;
+body{
+    font-family: 'Playfair Display', serif;
+    background-color:navy;
 }
-.container{
-    padding:20px;
+
+.header{
+    background-color:black;
+    color:yellow;
+    border-top: solid 3px yellow;
+    border-bottom:solid 3px yellow;
 }
-.clock{
-    background-color: grey;
-    padding-bottom:5px;
-    margin-bottom:5px;
+.fullPage{
+    padding:5px;
 }
-.clock-header{
-    background-color: grey;
-    padding-bottom:5px;
-    
+
+
+.trainInfo {
+    background-color:rgba(0,0,0,0);
 }
-.schedule{
-    background-color:darkblue;
-    color: white;
+.form-control{
+    background-color:rgba(0,0,0,0);
+    border: solid 1px black;
+    color:black;
 }
-.trainInfo tr:nth-child(even){
-    background-color:lightgrey;
+
+
+.leftImage{
+    width:300px;
+    height:175px;
+}
+.rightImage{
+    width:300px;
+    height:175px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+.submit{
+    background-color:rgba(0,0,0,0);
+    color:black;
+    border: solid 1px black;
+}
+.lowerHalf{
+    background-image: url('./paper.jpg');
+    background-size:100%;
+    padding-bottom:10px;
 }

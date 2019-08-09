@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel='stylesheet' href="./style.css">
     <link href="https://fonts.googleapis.com/css?family=Charm:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.js"
         integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -29,93 +30,105 @@
 </head>
 
 <body>
-    <div class='container'>
+    <div class='container fullPage'>
+        <div class='container lowerHalf'>
         <div class='row header'>
-            <div class='col-md-12 text-center'>
+            <div class='col-md-4 text-center'>
+                <img src="./BOTrain.jpg" class='leftImage'>
+            </div>
+            <div class='col-md-4 text-center'>
                 <h1>Track Those Trains</h1>
             </div>
+            <div class='col-md-4 text-center'>
+                <img src="./BOTrain.jpg" class='rightImage'>
+            </div>
         </div>
+         
         <div class='row clock-header'>
             <div class='col-md-12 text-center'>
                 <h6>
-                    The current time is:
+                    The current date and time is:
                 </h6>
                 <h6 class='clock'>
 
                 </h6>
             </div>
         </div>
-        <div class='row schedule'>
-            <div class='col-md-12'>
-                <h5>Train Schedule</h5>
+       
+            <div class='row schedule'>
+                <div class='col-md-12'>
+                    <h5>Train Schedule</h5>
+                </div>
             </div>
-        </div>
-        <div class='row tracker'>
-            <div class='col-md-1'>
+            <div class='row tracker'>
+                <div class='col-md-1'>
 
-            </div>
-            <div class='col-md-10 text-center'>
-                <table style="width:100%" class='trainInfo'>
-                    <tr>
-                        <th>Train Name</th>
-                        <th>Destination</th>
-                        <th>Frequency</th>
-                        <th>Next Arrival</th>
-                        <th>Minutes to Next Arrival</th>
-                    </tr>
-                    <tr>
-                        <td>Boston Express</td>
-                        <td>Boston</td>
-                        <td>1300</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
+                </div>
+                <div class='col-md-10 text-center'>
+                    <table border='1' style="width:100%" class='trainInfo'>
+                        <tr class='trainInfoHeader'>
+                            <th>Train Name</th>
+                            <th>Destination</th>
+                            <th>Frequency</th>
+                            <th>Next Arrival</th>
+                            <th>Minutes to Next Arrival</th>
+                        </tr>
+                        <tr>
+                            <td>Boston Express</td>
+                            <td>Boston</td>
+                            <td>1300</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
 
-            </div>
+                </div>
 
-            <div class='col-md-1'>
+                <div class='col-md-1'>
 
+                </div>
             </div>
-        </div>
-        <br>
-        <div class='row form-header'>
-            <div class='col-md-12'>
-                <h5>Enter a New Train</h5>
-            </div>
-        </div>
-        <br>
-        <div class='row form'>
-            <div class='col-md-1'>
-
-            </div>
-            <div class='col-md-10'>
-                <form>
-                    <div class="form-group">
-                        <label for="trainNameInput">Train Name</label>
-                        <input type="name" class="form-control nameInput" placeholder="Enter Train Name">
+            <br>
+            <div class='container formContainer'>
+                <div class='row form-header'>
+                    <div class='col-md-12'>
+                        <h5>Enter a New Train</h5>
                     </div>
-                    <div class="form-group">
-                        <label for="trainDesinationInput">Desination</label>
-                        <input type="destinationInput" class="form-control destinationInput"
-                            placeholder="Enter Destination">
-                    </div>
-                    <div class="form-group">
-                        <label for="trainFirstArrival">First Arrival(hh:mm - Military Time)</label>
-                        <input type="firstArrivalInput" class="form-control arrivalInput"
-                            placeholder=" Enter First Arrival in Military Time">
-                    </div>
-                    <div class="form-group">
-                        <label for="trainArrivalInterval">How Often Does it Arrive?(In Minutes)</label>
-                        <input type="intervalInput" class="form-control intervalInput"
-                            placeholder="Enter Interval in Minutes">
-                    </div>
+                </div>
+                <br>
+                <div class='row form'>
+                    <div class='col-md-1'>
 
-                    <button type="button" class="btn btn-primary submit">Add The New Train</button>
-                </form>
-            </div>
-            <div class='col-md-1'>
+                    </div>
+                    <div class='col-md-10'>
+                        <form>
+                            <div class="form-group">
+                                <label for="trainNameInput">Train Name</label>
+                                <input type="name" class="form-control nameInput" placeholder="Enter Train Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="trainDesinationInput">Desination</label>
+                                <input type="destinationInput" class="form-control destinationInput"
+                                    placeholder="Enter Destination">
+                            </div>
+                            <div class="form-group">
+                                <label for="trainFirstArrival">First Arrival(hhmm - Military Time)</label>
+                                <input type="number" max='2359' maxlength="4" class="form-control arrivalInput"
+                                    placeholder=" Enter First Arrival in Military Time">
+                            </div>
+                            <div class="form-group">
+                                <label for="trainArrivalInterval">How Often Does it Arrive?(In Minutes)</label>
+                                <input type="intervalInput" class="form-control intervalInput"
+                                    placeholder="Enter Interval in Minutes">
+                            </div>
 
+                            <button type="button" class="btn btn-primary submit">Add The New Train</button>
+                        </form>
+                    </div>
+                    <div class='col-md-1'>
+
+                    </div>
+                </div>
             </div>
         </div>
 
