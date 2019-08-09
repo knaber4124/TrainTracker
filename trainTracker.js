@@ -71,10 +71,11 @@ $(document).ready(function () {
 
                 newTR.append(trainName, trainDesination, trainFrequency, nextArrivalTime, nextArrivalInterval);
                 $('.trainInfo').append(newTR);
-            });
+            
+            })
 
 
-        })
+        });
         // function updateTimes() {
         //     var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
         //     console.log(firstArrivalconverted);
@@ -93,11 +94,11 @@ $(document).ready(function () {
 
 
 
-    })
+    });
 
 
 
-})
+});
 
 
 
