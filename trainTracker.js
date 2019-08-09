@@ -28,13 +28,13 @@ $(document).ready(function () {
         var newTrainFirstArrival = $('.arrivalInput').val().trim();
         var newTrainInterval = $('.intervalInput').val().trim();
         var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
-        console.log(firstArrivalconverted);
+        
         var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
         var timeDifference = diffCalc % newTrainInterval;
         var timeRemaining = newTrainInterval - timeDifference;
-        console.log(timeRemaining);
+        
         var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-        console.log(nextArrival);
+        
         $('.nameInput').val('');
         $('.destinationInput').val('');
         $('.arrivalInput').val('');
@@ -50,6 +50,7 @@ $(document).ready(function () {
         });
 
         database.ref('/trains').on('child_added', function (childSnapshot) {
+            console.log(this);
             [this].forEach(element => {
                 let newTR = $('<tr>');
                 let trainName = $('<td>').text(childSnapshot.val().newTrain);
@@ -60,13 +61,13 @@ $(document).ready(function () {
                 let nextArrivalInterval = $('<td>');
                 nextArrivalInterval.addClass('timeRemainingData').text(childSnapshot.val().timeRemaining);
                 var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
-                console.log(firstArrivalconverted);
+                
                 var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
                 var timeDifference = diffCalc % newTrainInterval;
                 var timeRemaining = newTrainInterval - timeDifference;
-                console.log(timeRemaining);
+                
                 var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-                console.log(nextArrival);
+                
 
 
                 newTR.append(trainName, trainDesination, trainFrequency, nextArrivalTime, nextArrivalInterval);
