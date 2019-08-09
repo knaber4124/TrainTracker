@@ -82,20 +82,20 @@ $(document).ready(function () {
             $('.trainInfo').append(newTR);
 
         })
-        function updateTimes() {
-            var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
-            console.log(firstArrivalconverted);
-            var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
-            var timeDifference = diffCalc % newTrainInterval;
-            var timeRemaining = newTrainInterval - timeDifference;
-            console.log(timeRemaining);
-            var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-            console.log(nextArrival);
+        // function updateTimes() {
+        //     var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
+        //     console.log(firstArrivalconverted);
+        //     var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
+        //     var timeDifference = diffCalc % newTrainInterval;
+        //     var timeRemaining = newTrainInterval - timeDifference;
+        //     console.log(timeRemaining);
+        //     var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
+        //     console.log(nextArrival);
 
-            $('.nextArrivalData').text(snapShot.val().nextArrival);
-            $('.timeRemainingData').text(snapShot.val().timeRemaining);
-        }
-        setInterval(updateTimes, 1000)
+        //     $('.nextArrivalData').text(snapShot.val().nextArrival);
+        //     $('.timeRemainingData').text(snapShot.val().timeRemaining);
+        // }
+        // setInterval(updateTimes, 1000)
 
 
 
