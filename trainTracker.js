@@ -50,26 +50,29 @@ $(document).ready(function () {
         });
 
         database.ref('/trains').on('child_added', function (childSnapshot) {
-            let newTR = $('<tr>');
-            let trainName = $('<td>').text(childSnapshot.val().newTrain);
-            let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
-            let trainFrequency = $('<td>').text(childSnapshot.val().newTrainInterval + ' ' +'minutes');
-            let nextArrivalTime = $('<td>');
-            nextArrivalTime.addClass('nextArrivalData').text(childSnapshot.val().nextArrival);
-            let nextArrivalInterval = $('<td>');
-            nextArrivalInterval.addClass('timeRemainingData').text(childSnapshot.val().timeRemaining);
-            var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
-            console.log(firstArrivalconverted);
-            var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
-            var timeDifference = diffCalc % newTrainInterval;
-            var timeRemaining = newTrainInterval - timeDifference;
-            console.log(timeRemaining);
-            var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-            console.log(nextArrival);
+            [this].forEach(element => {
+                let newTR = $('<tr>');
+                let trainName = $('<td>').text(childSnapshot.val().newTrain);
+                let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
+                let trainFrequency = $('<td>').text(childSnapshot.val().newTrainInterval + ' ' + 'minutes');
+                let nextArrivalTime = $('<td>');
+                nextArrivalTime.addClass('nextArrivalData').text(childSnapshot.val().nextArrival);
+                let nextArrivalInterval = $('<td>');
+                nextArrivalInterval.addClass('timeRemainingData').text(childSnapshot.val().timeRemaining);
+                var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
+                console.log(firstArrivalconverted);
+                var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
+                var timeDifference = diffCalc % newTrainInterval;
+                var timeRemaining = newTrainInterval - timeDifference;
+                console.log(timeRemaining);
+                var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
+                console.log(nextArrival);
 
 
-            newTR.append(trainName, trainDesination, trainFrequency, nextArrivalTime, nextArrivalInterval);
-            $('.trainInfo').append(newTR);
+                newTR.append(trainName, trainDesination, trainFrequency, nextArrivalTime, nextArrivalInterval);
+                $('.trainInfo').append(newTR);
+            });
+
 
         })
         // function updateTimes() {
