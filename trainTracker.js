@@ -40,7 +40,7 @@ $(document).ready(function () {
         $('.arrivalInput').val('');
         $('.intervalInput').val('');
 
-        database.ref().push({
+        database.ref('/trains').push({
             newTrain: newTrain,
             newTrainDestination: newTrainDestination,
             newTrainFirstArrival: newTrainFirstArrival,
@@ -49,7 +49,7 @@ $(document).ready(function () {
             timeRemaining: timeRemaining
         });
 
-        database.ref().on('child_added', function (childSnapshot) {
+        database.ref('/trains').on('child_added', function (childSnapshot) {
             let newTR = $('<tr>');
             let trainName = $('<td>').text(childSnapshot.val().newTrain);
             let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
