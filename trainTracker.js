@@ -48,53 +48,52 @@ $(document).ready(function () {
             nextArrival: nextArrival,
             timeRemaining: timeRemaining
         });
+    });
+    database.ref('/trains').on('child_added', function (childSnapshot) {
 
-        database.ref('/trains').on('child_added', function (childSnapshot) {
+        console.log(childSnapshot)
+        $('.trainInfo').append(
+            $('<tr>'),
+            $('<td>').text(childSnapshot.val().newTrain),
+            $('<td>').text(childSnapshot.val().newTrainDestination),
+            $('<td>').text(childSnapshot.val().newTrainInterval),
+            $('<td>').text(childSnapshot.val().nextArrival),
+            $('<td>').text(childSnapshot.val().timeRemaining),
+        )
+        var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
 
+        var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
+        var timeDifference = diffCalc % newTrainInterval;
+        var timeRemaining = newTrainInterval - timeDifference;
 
+        var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
 
-            $('.trainInfo').append(
-                $('<tr>'),
-                $('<td>').text(childSnapshot.val().newTrain),
-                $('<td>').text(childSnapshot.val().newTrainDestination),
-                $('<td>').text(childSnapshot.val().newTrainInterval),
-                $('<td>').text(childSnapshot.val().nextArrival),
-                $('<td>').text(childSnapshot.val().timeRemaining),
-            )
-            var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
+        // let newTR = $('<tr>');
+        // let trainName = $('<td>').text(childSnapshot.val().newTrain);
+        // let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
+        // let trainFrequency = $('<td>').text(childSnapshot.val().newTrainInterval + ' ' + 'minutes');
+        // let nextArrivalTime = $('<td>');
+        // nextArrivalTime.addClass('nextArrivalData').text(childSnapshot.val().nextArrival);
+        // let nextArrivalInterval = $('<td>');
+        // nextArrivalInterval.addClass('timeRemainingData').text(childSnapshot.val().timeRemaining);
+        // var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
 
-            var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
-            var timeDifference = diffCalc % newTrainInterval;
-            var timeRemaining = newTrainInterval - timeDifference;
+        // var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
+        // var timeDifference = diffCalc % newTrainInterval;
+        // var timeRemaining = newTrainInterval - timeDifference;
 
-            var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-
-            // let newTR = $('<tr>');
-            // let trainName = $('<td>').text(childSnapshot.val().newTrain);
-            // let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
-            // let trainFrequency = $('<td>').text(childSnapshot.val().newTrainInterval + ' ' + 'minutes');
-            // let nextArrivalTime = $('<td>');
-            // nextArrivalTime.addClass('nextArrivalData').text(childSnapshot.val().nextArrival);
-            // let nextArrivalInterval = $('<td>');
-            // nextArrivalInterval.addClass('timeRemainingData').text(childSnapshot.val().timeRemaining);
-            // var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
-
-            // var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
-            // var timeDifference = diffCalc % newTrainInterval;
-            // var timeRemaining = newTrainInterval - timeDifference;
-
-            // var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-
+        // var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
 
 
-            // newTR.append(trainName, trainDesination, trainFrequency, nextArrivalTime, nextArrivalInterval);
-            // $('.trainInfo').append(newTR);
 
-        });
-        
-
+        // newTR.append(trainName, trainDesination, trainFrequency, nextArrivalTime, nextArrivalInterval);
+        // $('.trainInfo').append(newTR);
 
     });
+
+
+
+
     // function updateTimes() {
     //     var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
     //     console.log(firstArrivalconverted);
