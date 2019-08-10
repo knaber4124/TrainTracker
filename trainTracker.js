@@ -91,16 +91,7 @@ $(document).ready(function () {
             // $('.trainInfo').append(newTR);
 
         });
-        dataRef.ref().orderByChild('dateAdded').limitToLast(1).on('childAdded', function (snapshot) {
-            $('.trainInfo').append(
-                $('<tr>'),
-                $('<td>').text(childSnapshot.val().newTrain),
-                $('<td>').text(childSnapshot.val().newTrainDestination),
-                $('<td>').text(childSnapshot.val().newTrainInterval),
-                $('<td>').text(childSnapshot.val().nextArrival),
-                $('<td>').text(childSnapshot.val().timeRemaining),
-            )
-        })
+        
 
 
     });
