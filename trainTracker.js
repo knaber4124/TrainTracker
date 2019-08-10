@@ -49,16 +49,16 @@ $(document).ready(function () {
             timeRemaining: timeRemaining
         });
 
-        database.ref('/trains').on('child_added', function (childSnapshot) {
+        database.ref('/trains').on('child_added', function (snapshot) {
             
                 let newTR = $('<tr>');
-                let trainName = $('<td>').text(childSnapshot.val().newTrain);
-                let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
-                let trainFrequency = $('<td>').text(childSnapshot.val().newTrainInterval + ' ' + 'minutes');
+                let trainName = $('<td>').text(snapshot.val().newTrain);
+                let trainDesination = $('<td>').text(snapshot.val().newTrainDestination);
+                let trainFrequency = $('<td>').text(snapshot.val().newTrainInterval + ' ' + 'minutes');
                 let nextArrivalTime = $('<td>');
-                nextArrivalTime.addClass('nextArrivalData').text(childSnapshot.val().nextArrival);
+                nextArrivalTime.addClass('nextArrivalData').text(snapshot.val().nextArrival);
                 let nextArrivalInterval = $('<td>');
-                nextArrivalInterval.addClass('timeRemainingData').text(childSnapshot.val().timeRemaining);
+                nextArrivalInterval.addClass('timeRemainingData').text(snapshot.val().timeRemaining);
                 var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
                 
                 var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
