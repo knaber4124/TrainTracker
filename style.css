@@ -53,3 +53,18 @@ body{
     background-size:100%;
     padding-bottom:10px;
 }
+
+@Media only screen and (max-width:988px){
+    .rightImage{
+      width:200px;
+      height:125px;
+      
+    }
+    .leftImage{
+        width:200px;
+        height:125px;
+    }
+    .header{
+        font-size: 1.25em;
+    }
+  }

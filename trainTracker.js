@@ -8,7 +8,6 @@ $(document).ready(function () {
         messagingSenderId: "44644774961",
         appId: "1:44644774961:web:fb75e960592f73ff"
     };
-    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
     database = firebase.database();
@@ -18,7 +17,6 @@ $(document).ready(function () {
         $('.clock').text(moment().format('MMMM D YYYY, h:mm a'));
     }
     setInterval(update, 1000);
-
 
     $('.submit').on('click', function (event) {
         event.preventDefault();
@@ -47,11 +45,23 @@ $(document).ready(function () {
             newTrainInterval: newTrainInterval,
             nextArrival: nextArrival,
             timeRemaining: timeRemaining
-        });
+        })
+        function updateTimes() {
+            var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
+            console.log(firstArrivalconverted);
+            var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
+            var timeDifference = diffCalc % newTrainInterval;
+            var timeRemaining = newTrainInterval - timeDifference;
+            console.log(timeRemaining);
+            var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
+            console.log(nextArrival);
+
+            $('.nextArrivalData').text(snapShot.val().nextArrival);
+            $('.timeRemainingData').text(snapShot.val().timeRemaining);
+        }
+        setInterval(updateTimes, 1000)
     });
     database.ref('/trains').on('child_added', function (childSnapshot) {
-
-        console.log(childSnapshot)
         $('.trainInfo').append(
             $('<tr>'),
             $('<td>').text(childSnapshot.val().newTrain),
@@ -60,59 +70,16 @@ $(document).ready(function () {
             $('<td>').text(childSnapshot.val().nextArrival),
             $('<td>').text(childSnapshot.val().timeRemaining),
         )
-        var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
-
-        var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
-        var timeDifference = diffCalc % newTrainInterval;
-        var timeRemaining = newTrainInterval - timeDifference;
-
-        var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-
-        // let newTR = $('<tr>');
-        // let trainName = $('<td>').text(childSnapshot.val().newTrain);
-        // let trainDesination = $('<td>').text(childSnapshot.val().newTrainDestination);
-        // let trainFrequency = $('<td>').text(childSnapshot.val().newTrainInterval + ' ' + 'minutes');
-        // let nextArrivalTime = $('<td>');
-        // nextArrivalTime.addClass('nextArrivalData').text(childSnapshot.val().nextArrival);
-        // let nextArrivalInterval = $('<td>');
-        // nextArrivalInterval.addClass('timeRemainingData').text(childSnapshot.val().timeRemaining);
-        // var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
-
-        // var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
-        // var timeDifference = diffCalc % newTrainInterval;
-        // var timeRemaining = newTrainInterval - timeDifference;
-
-        // var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-
-
-
-        // newTR.append(trainName, trainDesination, trainFrequency, nextArrivalTime, nextArrivalInterval);
-        // $('.trainInfo').append(newTR);
-
     });
-
-
-
-
-    // function updateTimes() {
-    //     var firstArrivalconverted = moment(newTrainFirstArrival, 'HH:mm').subtract(1, 'years');
-    //     console.log(firstArrivalconverted);
-    //     var diffCalc = moment().diff(moment(firstArrivalconverted), 'minutes');
-    //     var timeDifference = diffCalc % newTrainInterval;
-    //     var timeRemaining = newTrainInterval - timeDifference;
-    //     console.log(timeRemaining);
-    //     var nextArrival = moment().add(timeRemaining, 'minutes').format('h:mma');
-    //     console.log(nextArrival);
-
-    //     $('.nextArrivalData').text(snapShot.val().nextArrival);
-    //     $('.timeRemainingData').text(snapShot.val().timeRemaining);
-    // }
-    // setInterval(updateTimes, 1000)
-
-
-
-
 });
+
+
+
+
+
+
+
+
 
 
 
